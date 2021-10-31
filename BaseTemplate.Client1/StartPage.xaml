@@ -1,0 +1,55 @@
+﻿<Window x:Class="BaseTemplate.Client1.StartPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaseTemplate.Client1"
+        mc:Ignorable="d"
+        Title="StartPage" Height="450" Width="800"
+        WindowState="Maximized" 
+        >
+    <Grid>
+        <TabControl >
+            <TabItem Header="A">
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Title A"/>
+                        <TextBox x:Name="textboxA"/>
+                        <Label x:Name="labelA"/>
+                        <Button Content="OK" Click="Button_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="B">
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Title B"/>
+                        <TextBox x:Name="textboxB" />
+                        <Label x:Name="labelB"/>
+                        <Button Content="OK" Click="Button_Click_1"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="C">
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Title C"/>
+                        <TextBox x:Name="textboxC"/>
+                        <Label x:Name="labelC"/>
+                        <Button Content="OK" Click="Button_Click_2"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="D">
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Title D"/>
+                        <TextBox x:Name="textboxD"/>
+                        <Label x:Name="labelD"/>
+                        <Button Content="OK" Click="Button_Click_3"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

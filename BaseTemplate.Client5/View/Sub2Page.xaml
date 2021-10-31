@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="BaseTemplate.Client5.View.Sub2Page"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaseTemplate.Client5.View"
+             xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
+             xmlns:Control="clr-namespace:BaseTemplate.Client5.Control"
+             md:DialogServiceViews.IsRegistered="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Label Content="{Binding Title}"/>
+            <TextBox Text="{Binding Text}"/>
+            <Label Content="{Binding Output}"/>
+            <Label Content="{Binding Output}"/>
+            <Label Content="{Binding Output}"/>
+            <Label Content="{Binding Output}"/>
+            <Label Content="{Binding Output}"/>
+            <Button Content="OK" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Command="{Binding OnClickCommand}"/>
+        </StackPanel>
+        <Control:WaitIndicator Grid.ColumnSpan="2" Visibility="{Binding IsBusy, Converter={StaticResource VisibleIfTrueConverter }}"
+                               Description="{Binding Description}"/>
+    </Grid>
+</UserControl>

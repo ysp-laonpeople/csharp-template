@@ -1,0 +1,90 @@
+﻿<mah:MetroWindow x:Class="BaseTemplate.Client5.View.StartPage"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaseTemplate.Client5.View"
+             xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
+             md:DialogServiceViews.IsRegistered="True"
+             mc:Ignorable="d" 
+             Title="{Binding Title}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <mah:MetroWindow.Resources>
+        <ResourceDictionary>
+            <!--  This is the template for all menu items. In this sample we use the glyph items.  -->
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type mah:HamburgerMenuIconItem}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Icon}"
+                                    Focusable="False"
+                                    IsTabStop="False" />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Text="{Binding Label}" />
+                </Grid>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:SubPageViewModel}">
+                <local:SubPage DataContext="{Binding}"/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:Sub2PageViewModel}">
+                <local:Sub2Page DataContext="{Binding}"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </mah:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="24"/>
+        </Grid.RowDefinitions>
+       
+        <mah:HamburgerMenu Grid.Row="0"                         
+            x:Name="HamburgerMenuControl"
+                               HamburgerWidth="48"                           
+                               IsPaneOpen="False"                               
+                               ItemTemplate="{StaticResource MenuItemTemplate}"
+                               OptionsItemTemplate="{StaticResource MenuItemTemplate}"                                                          
+                               VerticalScrollBarOnLeftSide="False"
+                               SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"                               
+                           >
+            <!--  Header  -->
+            <mah:HamburgerMenu.HamburgerMenuHeaderTemplate>
+                <DataTemplate>
+                    <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Foreground="White"
+                   Text="Test Page" />
+                </DataTemplate>
+            </mah:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <!--  Items  -->
+            <mah:HamburgerMenu.ItemsSource>
+                <mah:HamburgerMenuItemCollection>
+                    <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Home}" Label="SubPage" Tag="SubPageViewModel">                        
+                    </mah:HamburgerMenuIconItem>
+                    <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=AccountCircle}" Label="Sub2Page" Tag="Sub2PageViewModel">                        
+                    </mah:HamburgerMenuIconItem>                    
+                </mah:HamburgerMenuItemCollection>
+            </mah:HamburgerMenu.ItemsSource>
+            <!--  Options  -->
+            <mah:HamburgerMenu.OptionsItemsSource>
+                <mah:HamburgerMenuItemCollection>
+                    <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Cog}" Label="Setting" Tag="2"/>
+                </mah:HamburgerMenuItemCollection>
+            </mah:HamburgerMenu.OptionsItemsSource>
+            <mah:HamburgerMenu.Content>                
+                <ContentControl Grid.ColumnSpan="2" Margin="4,4,4,4" Content="{Binding CurrentViewModel}"/>
+            </mah:HamburgerMenu.Content>
+        </mah:HamburgerMenu>
+
+        <StatusBar Grid.Row="1" />
+    </Grid>
+</mah:MetroWindow>
