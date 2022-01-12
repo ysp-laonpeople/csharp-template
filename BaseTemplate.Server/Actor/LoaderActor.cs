@@ -14,11 +14,9 @@ namespace BaseTemplate.Server
     {
         
         TestConfig config;
-        Dictionary<string, IActorRef> chileActors = new Dictionary<string, IActorRef>();
-
 
         JsonSerializerSettings jsonSetting;
-        string lastEndInspection = string.Empty;
+        
         public LoaderActor(TestConfig postProcessorConfig)
         {
             this.config = postProcessorConfig;
